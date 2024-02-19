@@ -34,9 +34,10 @@
                         <div class="card-body">  
                                 {{tasks.task}}
                             <span style="position: relative; float: right;">
-                                <a class="btn btn-success"><i class="fa fa-check"></i> Mark as Done</a>
-                                <a class="btn btn-danger"><i class="fa fa-trash"></i></a>
-                                <a class="btn btn-primary"><i class="fa fa-pencil"></i></a>
+                                <a href="{% url 'mark_as_done' tasks.id %}" class="btn btn-success"><i class="fa fa-check"></i> Mark as Done</a>
+                                <!--OUR URL PATTERN IS OF THE FORM markasdone/primary key , task.pk or task.id-->
+                                <a href="{% url 'delete_task' tasks.id %}" class="btn btn-danger"><i class="fa fa-trash"></i></a>
+                                <a href="{% url 'edit_task' tasks.pk %}" class="btn btn-primary"><i class="fa fa-pencil"></i></a>
                             </span>
                         </div>
                     </div>
@@ -51,6 +52,7 @@
                         <div class="card-body">
                             {{ t.task }}
                         </div>
+                        <a href="{% url 'mark_as_undone' t.pk %}" class="btn btn-success"><i class="fa fa-check"></i> Mark as Undone</a>
                     </div>
                     {% endfor %}
                 </div>
