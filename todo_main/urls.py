@@ -15,11 +15,16 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-from django.urls import path
+from django.urls import path, include
 from . import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
 
     path('', views.home, name='home'),
+
+    # any request comes to URLS.PY of the PROJECT PAGE
+    # which should be redirected to the app
+    path('todo/', include('todo.urls'))
+    # any request coming with this pattern 'todo/' will be redirected to todo.urls
 ]
